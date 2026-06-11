@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KosKu Balikpapan — Temukan Hunian Terbaik</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">KosKu <span>Balikpapan</span></a>
+      <div class="nav-links">
+        <a href="#listing">Properti</a>
+        <a href="#about">Tentang</a>
+        <a href="#" id="open-admin-btn" class="btn-gold-outline">+ Tambah Kos</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#listing">Properti</a>
+      <a href="#about">Tentang</a>
+      <a href="#" id="open-admin-btn-mobile">+ Tambah Kos</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════ HERO ════════════════════════════ -->
+  <header class="hero">
+    <div class="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline poster="">
+        <!-- Ganti src dengan file video lokal atau URL video kamu -->
+        <!-- <source src="video/hero.mp4" type="video/mp4" /> -->
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Fallback gradient jika tidak ada video -->
+    <div class="hero-bg-fallback"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hunian Premium di Kota Minyak</p>
+      <h1 class="hero-title">Kos Terbaik<br/><em>Balikpapan</em></h1>
+      <p class="hero-sub">Temukan kamar kos impianmu — nyaman, terjangkau, dan tersebar di seluruh area Balikpapan.</p>
+      <a href="#listing" class="btn-gold">Lihat Properti</a>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span></span>
+      <p>Scroll</p>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════ STATS BAR ════════════════════════ -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" id="stat-total">0</span>
+      <span class="stat-label">Properti Terdaftar</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">7</span>
+      <span class="stat-label">Area Balikpapan</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Terverifikasi Langsung</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FILTER ═══════════════════════════ -->
+  <section class="filter-section" id="listing">
+    <div class="filter-wrap">
+      <h2 class="section-title">Cari Kos <span>Idealmu</span></h2>
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Area Balikpapan</label>
+          <select id="filter-area">
+            <option value="">Semua Area</option>
+            <option value="Balikpapan Selatan">Balikpapan Selatan</option>
+            <option value="Balikpapan Utara">Balikpapan Utara</option>
+            <option value="Balikpapan Barat">Balikpapan Barat</option>
+            <option value="Balikpapan Timur">Balikpapan Timur</option>
+            <option value="Balikpapan Tengah">Balikpapan Tengah</option>
+            <option value="Balikpapan Kota">Balikpapan Kota</option>
+            <option value="Sepinggan">Sepinggan</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Harga Maksimal</label>
+          <select id="filter-price">
+            <option value="">Semua Harga</option>
+            <option value="500000">s/d Rp 500.000</option>
+            <option value="1000000">s/d Rp 1.000.000</option>
+            <option value="1500000">s/d Rp 1.500.000</option>
+            <option value="2000000">s/d Rp 2.000.000</option>
+            <option value="3000000">s/d Rp 3.000.000</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Tipe Kamar</label>
+          <select id="filter-type">
+            <option value="">Semua Tipe</option>
+            <option value="Putra">Putra</option>
+            <option value="Putri">Putri</option>
+            <option value="Campur">Campur</option>
+          </select>
+        </div>
+        <button class="btn-gold" id="btn-filter">Cari Sekarang</button>
+        <button class="btn-ghost" id="btn-reset">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ LISTING GRID ══════════════════════ -->
+  <section class="listing-section">
+    <div class="listing-grid" id="listing-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+    <p class="empty-state" id="empty-state" style="display:none;">
+      Tidak ada kos yang sesuai filter. Coba ubah kriteria pencarianmu.
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════ ABOUT ════════════════════════════ -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="hero-eyebrow">Platform Lokal #1</p>
+        <h2>Mengapa <span>KosKu?</span></h2>
+        <p>KosKu hadir khusus untuk membantu warga dan pendatang menemukan hunian terbaik di Balikpapan — dari Sepinggan hingga Balikpapan Utara, semua tersedia dalam satu platform.</p>
+        <ul class="about-list">
+          <li><span class="gold-dot"></span>Data properti selalu diperbarui secara real-time</li>
+          <li><span class="gold-dot"></span>Foto asli langsung dari pemilik kos</li>
+          <li><span class="gold-dot"></span>Gratis daftar untuk pemilik properti</li>
+          <li><span class="gold-dot"></span>Fokus eksklusif di wilayah Balikpapan</li>
+        </ul>
+      </div>
+      <div class="about-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63851.68894781478!2d116.78499!3d-1.2653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14f5a0c9e3c5f%3A0x4f5c4c5b2b2b2b2b!2sBalikpapan%2C%20Kalimantan%20Timur!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="logo">KosKu <span>Balikpapan</span></p>
+        <p class="footer-tagline">Platform kos eksklusif untuk Kota Minyak.</p>
+      </div>
+      <div class="footer-links">
+        <p class="footer-heading">Navigasi</p>
+        <a href="#listing">Lihat Properti</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#" id="footer-admin-link">Tambah Kos</a>
+      </div>
+      <div class="footer-links">
+        <p class="footer-heading">Area</p>
+        <a href="#">Balikpapan Selatan</a>
+        <a href="#">Balikpapan Utara</a>
+        <a href="#">Sepinggan</a>
+        <a href="#">Balikpapan Barat</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 KosKu Balikpapan. Dibuat dengan ❤ untuk Kota Minyak.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════ MODAL DETAIL ══════════════════════ -->
+  <div class="modal-overlay" id="modal-detail">
+    <div class="modal-box">
+      <button class="modal-close" id="close-detail">&times;</button>
+      <div class="modal-slideshow" id="detail-slideshow">
+        <div class="slide-track" id="detail-slides"></div>
+        <button class="slide-prev" id="detail-prev">&#8592;</button>
+        <button class="slide-next" id="detail-next">&#8594;</button>
+        <div class="slide-dots" id="detail-dots"></div>
+      </div>
+      <div class="modal-info">
+        <p class="modal-area" id="detail-area"></p>
+        <h2 class="modal-name" id="detail-name"></h2>
+        <p class="modal-price" id="detail-price"></p>
+        <div class="modal-tags">
+          <span id="detail-type" class="tag"></span>
+          <span id="detail-avail" class="tag tag-green"></span>
+        </div>
+        <p class="modal-desc" id="detail-desc"></p>
+        <div class="modal-actions">
+          <button class="btn-gold" id="detail-edit-btn">Edit Kos</button>
+          <button class="btn-danger" id="detail-delete-btn">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ MODAL ADMIN (CRUD) ════════════════ -->
+  <div class="modal-overlay" id="modal-admin">
+    <div class="modal-box modal-form-box">
+      <button class="modal-close" id="close-admin">&times;</button>
+      <h2 class="modal-form-title" id="form-title">Tambah Kos Baru</h2>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Nama Kos *</label>
+          <input type="text" id="f-name" placeholder="cth: Kos Melati Indah" />
+        </div>
+        <div class="form-group">
+          <label>Area Balikpapan *</label>
+          <select id="f-area">
+            <option value="">Pilih Area</option>
+            <option value="Balikpapan Selatan">Balikpapan Selatan</option>
+            <option value="Balikpapan Utara">Balikpapan Utara</option>
+            <option value="Balikpapan Barat">Balikpapan Barat</option>
+            <option value="Balikpapan Timur">Balikpapan Timur</option>
+            <option value="Balikpapan Tengah">Balikpapan Tengah</option>
+            <option value="Balikpapan Kota">Balikpapan Kota</option>
+            <option value="Sepinggan">Sepinggan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tipe Kos *</label>
+          <select id="f-type">
+            <option value="">Pilih Tipe</option>
+            <option value="Putra">Putra</option>
+            <option value="Putri">Putri</option>
+            <option value="Campur">Campur</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Harga / Bulan (Rp) *</label>
+          <input type="number" id="f-price" placeholder="cth: 750000" />
+        </div>
+        <div class="form-group">
+          <label>Kamar Tersedia</label>
+          <input type="number" id="f-avail" placeholder="cth: 3" min="0" />
+        </div>
+        <div class="form-group full">
+          <label>Deskripsi Singkat</label>
+          <textarea id="f-desc" rows="3" placeholder="Ceritakan fasilitas, suasana, akses transportasi, dll."></textarea>
+        </div>
+
+        <!-- FOTO UPLOAD -->
+        <div class="form-group full">
+          <label>Foto Kos (URL gambar, satu per baris)</label>
+          <textarea id="f-photos" rows="4" placeholder="https://example.com/foto1.jpg&#10;https://example.com/foto2.jpg&#10;&#10;Atau biarkan kosong untuk foto placeholder."></textarea>
+          <p class="form-hint">Masukkan URL foto yang sudah diunggah (Google Drive, ImgBB, dll). Satu URL per baris.</p>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-gold" id="btn-save">Simpan Kos</button>
+        <button class="btn-ghost" id="btn-cancel-form">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ TOAST ════════════════════════════ -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
