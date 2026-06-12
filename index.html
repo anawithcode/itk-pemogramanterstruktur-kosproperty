@@ -15,14 +15,12 @@
       <div class="nav-links">
         <a href="#listing">Properti</a>
         <a href="#about">Tentang</a>
-        <a href="#" id="open-admin-btn" class="btn-gold-outline">+ Tambah Kos</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#listing">Properti</a>
       <a href="#about">Tentang</a>
-      <a href="#" id="open-admin-btn-mobile">+ Tambah Kos</a>
     </div>
   </nav>
 
@@ -159,7 +157,6 @@
         <p class="footer-heading">Navigasi</p>
         <a href="#listing">Lihat Properti</a>
         <a href="#about">Tentang Kami</a>
-        <a href="#" id="footer-admin-link">Tambah Kos</a>
       </div>
       <div class="footer-links">
         <p class="footer-heading">Area</p>
@@ -170,97 +167,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 KosPapan Balikpapan. Dibuat dengan Claude akwokwok</p>
+      <p>&copy; 2025 KosPapan Balikpapan.</p>
     </div>
   </footer>
-
-  <!-- ═══════════════════════════ MODAL DETAIL ══════════════════════ -->
-  <div class="modal-overlay" id="modal-detail">
-    <div class="modal-box">
-      <button class="modal-close" id="close-detail">&times;</button>
-      <div class="modal-slideshow" id="detail-slideshow">
-        <div class="slide-track" id="detail-slides"></div>
-        <button class="slide-prev" id="detail-prev">&#8592;</button>
-        <button class="slide-next" id="detail-next">&#8594;</button>
-        <div class="slide-dots" id="detail-dots"></div>
-      </div>
-      <div class="modal-info">
-        <p class="modal-area" id="detail-area"></p>
-        <h2 class="modal-name" id="detail-name"></h2>
-        <p class="modal-price" id="detail-price"></p>
-        <div class="modal-tags">
-          <span id="detail-type" class="tag"></span>
-          <span id="detail-avail" class="tag tag-green"></span>
-        </div>
-        <p class="modal-desc" id="detail-desc"></p>
-        <div class="modal-actions">
-          <button class="btn-gold" id="detail-edit-btn">Edit Kos</button>
-          <button class="btn-danger" id="detail-delete-btn">Hapus</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════ MODAL ADMIN (CRUD) ════════════════ -->
-  <div class="modal-overlay" id="modal-admin">
-    <div class="modal-box modal-form-box">
-      <button class="modal-close" id="close-admin">&times;</button>
-      <h2 class="modal-form-title" id="form-title">Tambah Kos Baru</h2>
-
-      <div class="form-grid">
-        <div class="form-group full">
-          <label>Nama Kos *</label>
-          <input type="text" id="f-name" placeholder="cth: Kos Melati Indah" />
-        </div>
-        <div class="form-group">
-          <label>Area Balikpapan *</label>
-          <select id="f-area">
-            <option value="">Pilih Area</option>
-            <option value="Balikpapan Selatan">Balikpapan Selatan</option>
-            <option value="Balikpapan Utara">Balikpapan Utara</option>
-            <option value="Balikpapan Barat">Balikpapan Barat</option>
-            <option value="Balikpapan Timur">Balikpapan Timur</option>
-            <option value="Balikpapan Tengah">Balikpapan Tengah</option>
-            <option value="Balikpapan Kota">Balikpapan Kota</option>
-            <option value="Sepinggan">Sepinggan</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Tipe Kos *</label>
-          <select id="f-type">
-            <option value="">Pilih Tipe</option>
-            <option value="Putra">Putra</option>
-            <option value="Putri">Putri</option>
-            <option value="Campur">Campur</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Harga / Bulan (Rp) *</label>
-          <input type="number" id="f-price" placeholder="cth: 750000" />
-        </div>
-        <div class="form-group">
-          <label>Kamar Tersedia</label>
-          <input type="number" id="f-avail" placeholder="cth: 3" min="0" />
-        </div>
-        <div class="form-group full">
-          <label>Deskripsi Singkat</label>
-          <textarea id="f-desc" rows="3" placeholder="Ceritakan fasilitas, suasana, akses transportasi, dll."></textarea>
-        </div>
-
-        <!-- FOTO UPLOAD -->
-        <div class="form-group full">
-          <label>Foto Kos (URL gambar, satu per baris)</label>
-          <textarea id="f-photos" rows="4" placeholder="https://example.com/foto1.jpg&#10;https://example.com/foto2.jpg&#10;&#10;Atau biarkan kosong untuk foto placeholder."></textarea>
-          <p class="form-hint">Masukkan URL foto yang sudah diunggah (Google Drive, ImgBB, dll). Satu URL per baris.</p>
-        </div>
-      </div>
-
-      <div class="form-actions">KosPapan
-        <button class="btn-gold" id="btn-save">Simpan Kos</button>
-        <button class="btn-ghost" id="btn-cancel-form">Batal</button>
-      </div>
-    </div>
-  </div>
 
   <!-- ═══════════════════════════ TOAST ════════════════════════════ -->
   <div class="toast" id="toast"></div>

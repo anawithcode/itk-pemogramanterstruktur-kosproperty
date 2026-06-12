@@ -33,7 +33,7 @@ function getDefaultData() {
       price: 750000,
       available: 3,
       desc: 'Kos putri dekat Bandara SAMS, lingkungan aman dan bersih. Akses mudah ke pusat perbelanjaan dan kampus terdekat.',
-      photos: []
+      photos: ['kos1.webp']
     },
     {
       id: uid(),
@@ -43,7 +43,7 @@ function getDefaultData() {
       price: 600000,
       available: 5,
       desc: 'Kos putra strategis di kawasan Balikpapan Utara. Dekat dengan area industri dan pusat kota. Parkir motor tersedia.',
-      photos: []
+      photos: ['kos2.webp']
     },
     {
       id: uid(),
@@ -53,7 +53,7 @@ function getDefaultData() {
       price: 1200000,
       available: 2,
       desc: 'Kos eksklusif area Sepinggan. Fasilitas lengkap, kamar luas, akses dekat Bandara. Cocok untuk profesional muda.',
-      photos: []
+      photos: ['kos3.webp']
     },
     {
       id: uid(),
@@ -63,7 +63,7 @@ function getDefaultData() {
       price: 500000,
       available: 4,
       desc: 'Kos putri harga terjangkau di Balikpapan Barat. Pemilik ramah, lingkungan tenang dan nyaman.',
-      photos: []
+      photos: ['kos4.webp']
     },
     {
       id: uid(),
@@ -73,7 +73,7 @@ function getDefaultData() {
       price: 1500000,
       available: 1,
       desc: 'Kos premium di jantung kota Balikpapan. Dekat dengan pusat bisnis, mal, dan fasilitas umum.',
-      photos: []
+      photos: ['kos5.webp']
     },
     {
       id: uid(),
@@ -83,7 +83,7 @@ function getDefaultData() {
       price: 650000,
       available: 6,
       desc: 'Kos putra nyaman di area Balikpapan Timur. Kamar bersih, air lancar, dekat jalan utama.',
-      photos: []
+      photos: ['kos6.webp']
     }
   ];
 }
@@ -95,7 +95,6 @@ function uid() {
 /* ── STATE ───────────────────────────────────────────────────── */
 let allKos   = loadData();
 let filtered = [...allKos];
-let editingId = null;  // null = create, string = edit mode
 
 /* ── SLIDESHOW STATE PER CARD (index tracker) ───────────────── */
 const cardSlideIndex = {}; // { kosId: currentIndex }
@@ -111,20 +110,6 @@ const filterType     = document.getElementById('filter-type');
 const btnFilter      = document.getElementById('btn-filter');
 const btnReset       = document.getElementById('btn-reset');
 
-// Admin modal
-const modalAdmin     = document.getElementById('modal-admin');
-const closeAdmin     = document.getElementById('close-admin');
-const formTitle      = document.getElementById('form-title');
-const fName          = document.getElementById('f-name');
-const fArea          = document.getElementById('f-area');
-const fType          = document.getElementById('f-type');
-const fPrice         = document.getElementById('f-price');
-const fAvail         = document.getElementById('f-avail');
-const fDesc          = document.getElementById('f-desc');
-const fPhotos        = document.getElementById('f-photos');
-const btnSave        = document.getElementById('btn-save');
-const btnCancelForm  = document.getElementById('btn-cancel-form');
-
 // Detail modal
 const modalDetail    = document.getElementById('modal-detail');
 const closeDetail    = document.getElementById('close-detail');
@@ -138,7 +123,6 @@ const detailPrice    = document.getElementById('detail-price');
 const detailType     = document.getElementById('detail-type');
 const detailAvail    = document.getElementById('detail-avail');
 const detailDesc     = document.getElementById('detail-desc');
-const detailEditBtn  = document.getElementById('detail-edit-btn');
 const detailDeleteBtn= document.getElementById('detail-delete-btn');
 
 let detailSlideCount = 0;
@@ -175,7 +159,6 @@ function buildCard(kos) {
   card.setAttribute('data-id', kos.id);
 
   const photos = kos.photos && kos.photos.length ? kos.photos : [];
-  const totalSlides = photos.length || 1;
 
   /* --- Slideshow HTML --- */
   let slidesHTML = '';
@@ -381,101 +364,6 @@ function goDetailSlide(idx) {
   });
 }
 
-/* ══════════════════════════════════════════════════════════════
-   ADMIN MODAL (CRUD)
-══════════════════════════════════════════════════════════════ */
-function openAdminModal(editId = null) {
-  editingId = editId;
-
-  if (editId) {
-    const kos = allKos.find(k => k.id === editId);
-    if (!kos) return;
-    formTitle.textContent = 'Edit Data Kos';
-    fName.value   = kos.name;
-    fArea.value   = kos.area;
-    fType.value   = kos.type;
-    fPrice.value  = kos.price;
-    fAvail.value  = kos.available || '';
-    fDesc.value   = kos.desc || '';
-    fPhotos.value = (kos.photos || []).join('\n');
-  } else {
-    formTitle.textContent = 'Tambah Kos Baru';
-    fName.value = fArea.value = fType.value = fPrice.value = fAvail.value = fDesc.value = fPhotos.value = '';
-  }
-
-  modalAdmin.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeAdminModal() {
-  modalAdmin.classList.remove('open');
-  document.body.style.overflow = '';
-  editingId = null;
-}
-
-function saveKos() {
-  /* Validate */
-  const name  = fName.value.trim();
-  const area  = fArea.value;
-  const type  = fType.value;
-  const price = parseInt(fPrice.value);
-  const avail = parseInt(fAvail.value) || 0;
-  const desc  = fDesc.value.trim();
-  const photos = fPhotos.value
-    .split('\n')
-    .map(l => l.trim())
-    .filter(l => l.length > 0);
-
-  if (!name) { showToast('Nama kos tidak boleh kosong.'); fName.focus(); return; }
-  if (!area) { showToast('Pilih area Balikpapan.'); fArea.focus(); return; }
-  if (!type) { showToast('Pilih tipe kos.'); fType.focus(); return; }
-  if (!price || price < 1) { showToast('Masukkan harga yang valid.'); fPrice.focus(); return; }
-
-  if (editingId) {
-    /* UPDATE */
-    const idx = allKos.findIndex(k => k.id === editingId);
-    if (idx !== -1) {
-      allKos[idx] = { ...allKos[idx], name, area, type, price, available: avail, desc, photos };
-      showToast('Data kos berhasil diperbarui ✓');
-    }
-  } else {
-    /* CREATE */
-    allKos.unshift({ id: uid(), name, area, type, price, available: avail, desc, photos });
-    showToast('Kos baru berhasil ditambahkan ✓');
-  }
-
-  saveData(allKos);
-  filtered = [...allKos];
-  resetFilter();
-  updateStat();
-  closeAdminModal();
-
-  // If we were in detail modal, close it
-  modalDetail.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function deleteKos(id) {
-  if (!confirm('Yakin ingin menghapus kos ini? Data tidak bisa dikembalikan.')) return;
-  allKos = allKos.filter(k => k.id !== id);
-  saveData(allKos);
-  filtered = [...allKos];
-  resetFilter();
-  updateStat();
-  modalDetail.classList.remove('open');
-  document.body.style.overflow = '';
-  showToast('Kos berhasil dihapus.');
-}
-
-/* ── TOAST ───────────────────────────────────────────────────── */
-let toastTimer = null;
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.classList.add('show');
-  if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
-}
 
 /* ══════════════════════════════════════════════════════════════
    BIND EVENTS
@@ -485,23 +373,10 @@ function bindEvents() {
   btnFilter.addEventListener('click', applyFilter);
   btnReset.addEventListener('click', resetFilter);
 
-  /* Filter on Enter */
+  /* Filter on change */
   [filterArea, filterPrice, filterType].forEach(el => {
     el.addEventListener('change', applyFilter);
   });
-
-  /* Open admin modal */
-  ['open-admin-btn', 'open-admin-btn-mobile', 'footer-admin-link'].forEach(btnId => {
-    const el = document.getElementById(btnId);
-    if (el) el.addEventListener('click', (e) => { e.preventDefault(); openAdminModal(); });
-  });
-
-  /* Close admin modal */
-  closeAdmin.addEventListener('click', closeAdminModal);
-  btnCancelForm.addEventListener('click', closeAdminModal);
-
-  /* Save kos */
-  btnSave.addEventListener('click', saveKos);
 
   /* Close detail modal */
   closeDetail.addEventListener('click', () => {
@@ -519,26 +394,6 @@ function bindEvents() {
     goDetailSlide(idx);
   });
 
-  /* Detail modal actions */
-  detailEditBtn.addEventListener('click', () => {
-    modalDetail.classList.remove('open');
-    openAdminModal(activeDetailId);
-  });
-  detailDeleteBtn.addEventListener('click', () => {
-    deleteKos(activeDetailId);
-  });
-
-  /* Close modals on overlay click */
-  modalAdmin.addEventListener('click', (e) => {
-    if (e.target === modalAdmin) closeAdminModal();
-  });
-  modalDetail.addEventListener('click', (e) => {
-    if (e.target === modalDetail) {
-      modalDetail.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-
   /* Hamburger mobile menu */
   const hamburger   = document.getElementById('hamburger');
   const mobileMenu  = document.getElementById('mobile-menu');
@@ -551,16 +406,6 @@ function bindEvents() {
     a.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
 
-  /* Keyboard ESC to close modal */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (modalAdmin.classList.contains('open'))  closeAdminModal();
-      if (modalDetail.classList.contains('open')) {
-        modalDetail.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    }
-  });
 }
 
 /* ── START ───────────────────────────────────────────────────── */
