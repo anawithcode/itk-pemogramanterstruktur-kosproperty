@@ -28,22 +28,17 @@
   <header class="hero">
     <div class="hero-video-wrap">
       <video class="hero-video" autoplay muted loop playsinline poster="">
-        <!-- Ganti src dengan file video lokal atau URL video kamu -->
         <!-- <source src="video/hero.mp4" type="video/mp4" /> -->
       </video>
       <div class="hero-overlay"></div>
     </div>
-
-    <!-- Fallback gradient jika tidak ada video -->
     <div class="hero-bg-fallback"></div>
-
     <div class="hero-content">
       <p class="hero-eyebrow">Hunian Premium di Kota Minyak</p>
       <h1 class="hero-title">Kos Terbaik<br/><em>Balikpapan</em></h1>
       <p class="hero-sub">Temukan kamar kos yang nyaman, terjangkau, dan tersebar di seluruh area Balikpapan.</p>
       <a href="#listing" class="btn-gold">Lihat Properti</a>
     </div>
-
     <div class="hero-scroll-hint">
       <span></span>
       <p>Scroll</p>
@@ -174,6 +169,33 @@
   <!-- ═══════════════════════════ TOAST ════════════════════════════ -->
   <div class="toast" id="toast"></div>
 
-  <script src="app.js"></script>
+  <!--
+    ═══════════════════════════════════════════════════════════
+    URUTAN SCRIPT — SANGAT PENTING!
+    Browser membaca dari atas ke bawah. File yang dibutuhkan
+    oleh file lain HARUS dipanggil lebih dulu.
+
+    Urutan ketergantungan:
+      helpers.js  → tidak bergantung pada siapapun (paling dasar)
+      config.js   → butuh uid() dari helpers.js
+      storage.js  → butuh STORAGE_KEY & getDefaultData() dari config.js
+      state.js    → butuh loadData() dari storage.js
+      render.js   → butuh helpers, state, dan openModal dari modal.js
+      modal.js    → butuh helpers, state, config
+      filter.js   → butuh state dan renderCards dari render.js
+      events.js   → butuh applyFilter & resetFilter dari filter.js
+      main.js     → titik akhir, memanggil semua fungsi di atas
+    ═══════════════════════════════════════════════════════════
+  -->
+  <script src="js/helpers.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
+
 </body>
 </html>
