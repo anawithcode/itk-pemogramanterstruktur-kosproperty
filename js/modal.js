@@ -69,6 +69,14 @@ function buildModal() {
           <p class="kos-modal-sec-label">Lokasi Terdekat</p>
           <div class="kos-modal-nearby" id="modal-nearby"></div>
         </div>
+        <div class="kos-modal-section" id="modal-map-section">
+          <p class="kos-modal-sec-label">Peta Lokasi</p>
+            <div id="modal-map"></div>
+        </div>
+<div class="kos-modal-section">
+  <p class="kos-modal-sec-label">Aturan Kos</p>
+  <ul class="kos-modal-rules" id="modal-rules"></ul>
+</div>
         <div class="kos-modal-section">
           <p class="kos-modal-sec-label">Aturan Kos</p>
           <ul class="kos-modal-rules" id="modal-rules"></ul>
@@ -211,8 +219,25 @@ function openModal(id) {
     (spec.sharedFacilities || []).map(f => `<div class="fac-chip">✔ ${escHtml(f)}</div>`).join('');
 
   // ── Lokasi terdekat ──
-  document.getElementById('modal-nearby').innerHTML =
-    (spec.nearbyPlaces || []).map(p => `<div class="nearby-item">📍 ${escHtml(p)}</div>`).join('');
+document.getElementById('modal-nearby').innerHTML =
+  (spec.nearbyPlaces || []).map(p => `<div class="nearby-item">📍 ${escHtml(p)}</div>`).join('');
+  
+
+// ── Peta lokasi ──
+const mapContainer = document.getElementById('modal-map');
+if (mapContainer) {
+  if (spec.mapEmbed) {
+    mapContainer.innerHTML = `
+      <iframe 
+        src="${spec.mapEmbed}"
+        width="100%" height="250" style="border:0;border-radius:8px;" 
+        allowfullscreen="" loading="lazy">
+      </iframe>`;
+    mapContainer.style.display = 'block';
+  } else {
+    mapContainer.style.display = 'none';
+  }
+}
 
   // ── Aturan kos ──
   document.getElementById('modal-rules').innerHTML =

@@ -42,6 +42,8 @@ function getDefaultData() {
         roomFacilities: ['Kasur & Bantal', 'Lemari Pakaian', 'Meja Belajar', 'AC', 'Kamar Mandi Dalam', 'Cermin'],
         sharedFacilities: ['Wi-Fi Kecepatan Tinggi', 'Dapur Umum', 'Parkir Motor', 'CCTV 24 Jam', 'Ruang Santai'],
         nearbyPlaces: ['Bandara SAMS ±2 km', 'Mall Balikpapan ±3 km', 'RS Pertamina ±1.5 km'],
+        mapEmbed: 'https://maps.google.com/maps?q=-1.2800,116.8950&z=15&output=embed'
+        
       },
     },
     {
@@ -64,6 +66,7 @@ function getDefaultData() {
         roomFacilities: ['Kasur & Bantal', 'Lemari Pakaian', 'Kipas Angin', 'Kamar Mandi Dalam'],
         sharedFacilities: ['Wi-Fi', 'Parkir Motor', 'Parkir Mobil (terbatas)', 'CCTV 24 Jam'],
         nearbyPlaces: ['Kawasan Industri Kariangau ±5 km', 'Pasar Pandansari ±1 km', 'SPBU ±500 m'],
+        mapEmbed: 'https://maps.google.com/maps?q=-1.2680,116.8980&z=15&output=embed'
       },
     },
     {
@@ -86,6 +89,7 @@ function getDefaultData() {
         roomFacilities: ['Kasur Spring Bed', 'Lemari 2 Pintu', 'Meja Kerja', 'AC Inverter', 'Kamar Mandi Dalam', 'Water Heater', 'TV 24"'],
         sharedFacilities: ['Wi-Fi Fiber Optik', 'Dapur Umum Lengkap', 'Parkir Motor', 'Parkir Mobil', 'CCTV 24 Jam', 'Gym Mini', 'Rooftop Garden'],
         nearbyPlaces: ['Bandara SAMS ±1.5 km', 'Sepinggan Raya ±500 m', 'Rumah Sakit Siloam ±2 km'],
+        mapEmbed: 'https://maps.google.com/maps?q=-1.2500,116.7900&z=15&output=embed'
       },
     },
     {
@@ -108,6 +112,7 @@ function getDefaultData() {
         roomFacilities: ['Kasur & Bantal', 'Lemari Kecil', 'Meja & Kursi Belajar', 'Kipas Angin'],
         sharedFacilities: ['Wi-Fi', 'Kamar Mandi Bersama (2 unit)', 'Parkir Motor', 'Ruang Cuci & Jemur'],
         nearbyPlaces: ['Pasar Klandasan ±2 km', 'Pelabuhan Semayang ±3 km', 'Minimarket ±300 m'],
+        mapEmbed: 'https://maps.google.com/maps?q=-1.2500,116.7900&z=15&output=embed'
       },
     },
     {
@@ -130,6 +135,7 @@ function getDefaultData() {
         roomFacilities: ['Kasur Spring Bed King Size', 'Lemari Built-in', 'Meja Kerja', 'AC', 'Kamar Mandi Dalam', 'Water Heater', 'Kulkas Mini', 'TV 32"'],
         sharedFacilities: ['Wi-Fi Fiber Optik', 'Lift', 'Dapur Bersama', 'Parkir Basement', 'CCTV 24 Jam', 'Keamanan 24 Jam', 'Ruang Meeting'],
         nearbyPlaces: ['Mal Balikpapan Plaza ±500 m', 'Kantor Pemkot ±1 km', 'RS Pertamina ±2 km'],
+        mapEmbed: 'https://maps.google.com/maps?q=-1.2600,116.8300&z=15&output=embed'
       },
     },
     {
@@ -152,6 +158,7 @@ function getDefaultData() {
         roomFacilities: ['Kasur & Bantal', 'Lemari Pakaian', 'Meja Belajar', 'AC', 'Kamar Mandi Dalam'],
         sharedFacilities: ['Wi-Fi', 'Dapur Umum', 'Parkir Motor Luas', 'CCTV 24 Jam', 'Area Bersantai'],
         nearbyPlaces: ['Jl. Soekarno-Hatta ±200 m', 'Kampus UKKW ±3 km', 'SPBU ±1 km'],
+        mapEmbed: 'https://maps.google.com/maps?q=-1.2400,116.9200&z=15&output=embed'
       },
     },
   ];
