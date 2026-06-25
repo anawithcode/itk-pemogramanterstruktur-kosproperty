@@ -2,43 +2,47 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Temukan Hunian Terbaik di KosPapan</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
 
   <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="#" class="logo">KosPapan <span>Balikpapan</span></a>
       <div class="nav-links">
-        <a href="#listing">Properti</a>
-        <a href="#about">Tentang</a>
+        <a href="#listing" class="nav-link">Properti</a>
+        <a href="#about" class="nav-link">Tentang</a>
+        <a href="#listing" class="btn-gold-outline">Pasang Iklan</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#listing">Properti</a>
       <a href="#about">Tentang</a>
+      <a href="#listing" class="btn-gold-outline" style="text-align:center;margin-top:0.5rem;">Pasang Iklan</a>
     </div>
   </nav>
 
   <!-- ═══════════════════════════ HERO ════════════════════════════ -->
-  <header class="hero">
+  <header class="hero" id="hero">
     <div class="hero-video-wrap">
-      <video class="hero-video" autoplay muted loop playsinline poster="">
+      <video class="hero-video" autoplay muted loop playsinline>
         <source src="video/kosss-video.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-bg-fallback"></div>
+
     <div class="hero-content">
       <p class="hero-eyebrow">Hunian Premium di Kota Minyak</p>
       <h1 class="hero-title">Kos Terbaik<br/><em>Balikpapan</em></h1>
-      <p class="hero-sub">Temukan kamar kos yang nyaman, terjangkau, dan tersebar di seluruh area Balikpapan.</p>
-      <a href="#listing" class="btn-gold">Lihat Properti</a>
+      <p class="hero-sub">Temukan kamar kos yang nyaman, terjangkau, dan tersebar di seluruh area Balikpapan dengan fasilitas lengkap.</p>
+      <a href="#listing" class="btn-gold" id="hero-cta">Jelajahi Sekarang</a>
     </div>
+
     <div class="hero-scroll-hint">
       <span></span>
       <p>Scroll</p>
@@ -46,28 +50,28 @@
   </header>
 
   <!-- ═══════════════════════════ STATS BAR ════════════════════════ -->
-  <section class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-num" id="stat-total">0</span>
+  <section class="stats-bar" id="stats-bar">
+    <div class="stat-item reveal-scale">
+      <span class="stat-num" data-target="0" id="stat-total">0</span>
       <span class="stat-label">Properti Terdaftar</span>
     </div>
     <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-num">7</span>
+    <div class="stat-item reveal-scale">
+      <span class="stat-num" data-target="7">0</span>
       <span class="stat-label">Area Balikpapan</span>
     </div>
     <div class="stat-divider"></div>
-    <div class="stat-item">
-      <span class="stat-num">100%</span>
-      <span class="stat-label">Terverifikasi Langsung</span>
+    <div class="stat-item reveal-scale">
+      <span class="stat-num" data-target="100">0</span>
+      <span class="stat-label">% Terverifikasi</span>
     </div>
   </section>
 
   <!-- ═══════════════════════════ FILTER ═══════════════════════════ -->
   <section class="filter-section" id="listing">
     <div class="filter-wrap">
-      <h2 class="section-title">Cari Kos <span>Idealmu</span></h2>
-      <div class="filter-bar">
+      <h2 class="section-title reveal-bottom">Cari Kos <span>Idealmu</span></h2>
+      <div class="filter-bar reveal-bottom">
         <div class="filter-group">
           <label>Area Balikpapan</label>
           <select id="filter-area">
@@ -110,7 +114,13 @@
   <!-- ═══════════════════════════ LISTING GRID ══════════════════════ -->
   <section class="listing-section">
     <div class="listing-grid" id="listing-grid">
-      <!-- Cards rendered by JS -->
+      <!-- Skeleton loading -->
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line sm"></div><div class="skeleton-line"></div><div class="skeleton-line lg"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line sm"></div><div class="skeleton-line"></div><div class="skeleton-line lg"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line sm"></div><div class="skeleton-line"></div><div class="skeleton-line lg"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line sm"></div><div class="skeleton-line"></div><div class="skeleton-line lg"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line sm"></div><div class="skeleton-line"></div><div class="skeleton-line lg"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line sm"></div><div class="skeleton-line"></div><div class="skeleton-line lg"></div></div></div>
     </div>
     <p class="empty-state" id="empty-state" style="display:none;">
       Tidak ada kos yang sesuai filter. Coba ubah kriteria pencarianmu.
@@ -120,7 +130,7 @@
   <!-- ═══════════════════════════ ABOUT ════════════════════════════ -->
   <section class="about-section" id="about">
     <div class="about-inner">
-      <div class="about-text">
+      <div class="about-text reveal-left">
         <p class="hero-eyebrow">Platform Lokal #1</p>
         <h2>Mengapa <span>KosPapan?</span></h2>
         <p>KosPapan hadir khusus untuk membantu warga dan pendatang menemukan hunian terbaik di Balikpapan hingga Balikpapan Utara, semua tersedia dalam satu platform.</p>
@@ -131,7 +141,7 @@
           <li><span class="gold-dot"></span>Fokus eksklusif di wilayah Balikpapan</li>
         </ul>
       </div>
-      <div class="about-map">
+      <div class="about-map reveal-right">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63851.68894781478!2d116.78499!3d-1.2653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14f5a0c9e3c5f%3A0x4f5c4c5b2b2b2b2b!2sBalikpapan%2C%20Kalimantan%20Timur!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid"
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -166,36 +176,85 @@
     </div>
   </footer>
 
+  <!-- ═══════════════════════════ DETAIL MODAL ═════════════════════ -->
+  <div class="modal-overlay" id="modal-detail">
+    <div class="modal-box">
+      <button class="modal-close" id="close-detail" aria-label="Tutup">&times;</button>
+      
+      <div class="modal-slideshow">
+        <div class="modal-slide-track" id="detail-slides"></div>
+        <button class="modal-slide-btn prev" id="detail-prev">&#10094;</button>
+        <button class="modal-slide-btn next" id="detail-next">&#10095;</button>
+        <div class="modal-dots" id="detail-dots"></div>
+        <div class="swipe-hint" id="swipe-hint">
+          <span class="swipe-icon">&#8592; &#8594;</span>
+          <span class="swipe-text">Geser untuk navigasi</span>
+        </div>
+      </div>
+
+      <div class="modal-info">
+        <div class="modal-header">
+          <div>
+            <p class="modal-area" id="detail-area"></p>
+            <h3 class="modal-name" id="detail-name"></h3>
+          </div>
+          <button class="like-btn" id="like-btn" aria-label="Suka">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="modal-price" id="detail-price"></p>
+        <div class="modal-meta">
+          <span class="meta-tag" id="detail-type"></span>
+          <span class="meta-tag" id="detail-avail"></span>
+        </div>
+        <div class="modal-facilities" id="detail-facilities">
+          <h4>Fasilitas</h4>
+          <div class="facilities-grid" id="facilities-grid"></div>
+        </div>
+        <div class="modal-desc">
+          <h4>Deskripsi</h4>
+          <p id="detail-desc"></p>
+        </div>
+        <!-- LOKASI KOS — ditambah di sini -->
+        <div class="modal-location" id="modal-map-section" style="display:none;">
+          <h4>Lokasi Kos</h4>
+          <p class="modal-map-address-text" id="modal-map-address"></p>
+          <div id="modal-map"></div>
+          <a id="modal-map-link" href="#" target="_blank" rel="noopener" 
+            class="modal-maps-btn" style="display:none;">
+          Buka di Google Maps ↗
+          </a>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-gold" id="btn-wa">Hubungi via WhatsApp</button>
+          <button class="btn-ghost" id="btn-copy">Salin Info</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ LIGHTBOX ════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <img src="" alt="Zoom" id="lightbox-img" />
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
   <!-- ═══════════════════════════ TOAST ════════════════════════════ -->
   <div class="toast" id="toast"></div>
 
-  <!--
-    ═══════════════════════════════════════════════════════════
-    URUTAN SCRIPT — SANGAT PENTING!
-    Browser membaca dari atas ke bawah. File yang dibutuhkan
-    oleh file lain HARUS dipanggil lebih dulu.
-
-    Urutan ketergantungan:
-      helpers.js  → tidak bergantung pada siapapun (paling dasar)
-      config.js   → butuh uid() dari helpers.js
-      storage.js  → butuh STORAGE_KEY & getDefaultData() dari config.js
-      state.js    → butuh loadData() dari storage.js
-      render.js   → butuh helpers, state, dan openModal dari modal.js
-      modal.js    → butuh helpers, state, config
-      filter.js   → butuh state dan renderCards dari render.js
-      events.js   → butuh applyFilter & resetFilter dari filter.js
-      main.js     → titik akhir, memanggil semua fungsi di atas
-    ═══════════════════════════════════════════════════════════
-  -->
-  <script src="js/helpers.js"></script>
   <script src="js/config.js"></script>
-  <script src="js/storage.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/state.js"></script>
-  <script src="js/render.js"></script>
-  <script src="js/modal.js"></script>
+  <script src="js/helpers.js"></script>
   <script src="js/filter.js"></script>
-  <script src="js/events.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>
