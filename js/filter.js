@@ -7,7 +7,7 @@ function applyFilter() {
   const type  = filterType.value;
 
   filtered = allKos.filter(kos => {
-    if (area  && kos.area !== area) return false;
+    if (area && !kos.area.includes(area)) return false;
     if (type  && kos.type !== type) return false;
     if (price && kos.price > price) return false;
     return true;
@@ -24,4 +24,4 @@ function resetFilter() {
   filtered = [...allKos];
   renderCards(filtered);
   showToast('Filter direset');
-}
+};
