@@ -7,13 +7,13 @@
 ## 🖼️ Preview
 
 **Hero Section**
-![Hero Section](img/hero-preview.png)
+![Hero Section](img/hero-view.png)
 
 **Listing & Pencarian Properti**
-![Listing Properti](img/listing-preview.png)
+![Listing Properti](img/listing-view.png)
 
 **Tentang & Peta Lokasi**
-![About & Map](img/about-preview.png)
+![About & Map](img/about-view.png)
 
 ## ✨ Fitur Utama
 
